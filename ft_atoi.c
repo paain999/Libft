@@ -26,11 +26,11 @@ int ft_atoi(const char *str)
     }
     return (val * sign);
 }
-/* int main ( void )
+int main ( void )
 {
     int ret;
     
     ret = ft_atoi("");
     printf("%i", ret);
      return 0 ;
-} */
+}
