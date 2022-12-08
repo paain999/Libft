@@ -43,7 +43,7 @@ char    *ft_strtrim(char const *s1, char const *set)
 {
     char *r;
 
-    r = ft_strtrim("@/Hola/@", "@/*&");
+    r = ft_strtrim("hola_Mundo_perron", "_");
     printf("%s", r);
     free(r);
     return (0);
