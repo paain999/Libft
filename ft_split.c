@@ -99,15 +99,15 @@ char **ft_split(char const *s, char c)
 	return (strings);
 }
 
-int main()
+/* int main()
 {
     char **r;
 	int i;
 
 	i = 0;
-    r = ft_split("hola_mundo_perron",'#');
-	while (i < 3)
+    r = ft_split("Hola_soy_David_J.",'_');
+	while (i < 4)
 		printf("%s ", r[i++]);
 	free(r);
     return (0);
-}
+} */
