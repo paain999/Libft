@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 14:32:55 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/12 14:32:55 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_strncmp(const char *str1, const char *str2, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-    size_t count;
-    int diff;
+	size_t	count;
+	int		diff;
 
-    count = 0;
-    diff = 0;
-    if(!n)
-        return (0);
-    while (str1[count] != '\0' && str2[count] != '\0' && diff == 0 &&count < n - 1)
-    {
-        diff = str1[count] - str2[count];
-        count++;
-    }
-    return (diff);
+	count = 0;
+	diff = 0;
+	if (!n)
+		return (0);
+	while (str1[count] != '\0' && str2[count] != '\0'
+		&& diff == 0 && count < n - 1)
+	{
+		diff = str1[count] - str2[count];
+		count++;
+	}
+	return (diff);
 }
-
 /* int main () {
    char str1[7] = "ABCdEF";
    char str2[7] = "ABcDEF";

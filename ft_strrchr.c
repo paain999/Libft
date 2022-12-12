@@ -1,22 +1,29 @@
-#include  "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 14:33:04 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/12 14:33:24 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char    *ft_strrchr(const char *str, int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *str, int c)
 {
-    int count;
-    int stop;
+	int	count;
 
-    count = ft_strlen(str);
-    stop = 0; 
-    while (count >= 0 || stop == 0)
-    {
-        if(str[count] == c)
-        {
-            return((char *)&str[count]);
-            stop = 1;
-        }
-        count--;
-    }
-    if(c == '\0')
-        return ((char *)&str[count]);
-    return (NULL);
+	count = ft_strlen(str);
+	while (count >= 0)
+	{
+		if (str[count] == c)
+			return ((char *)&str[count]);
+		count--;
+	}
+	if (c == '\0')
+		return ((char *)&str[count]);
+	return (NULL);
 }

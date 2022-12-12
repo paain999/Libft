@@ -1,22 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 14:32:05 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/12 14:32:05 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-size_t  ft_strlcat(char *dest, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-    size_t  destLen;
-    size_t  srcLen;
-    size_t count;
+	size_t	destlen;
+	size_t	srclen;
+	size_t	count;
 
-    destLen = ft_strlen(dest);
-    srcLen = ft_strlen(src);
-    if (size <= destLen)
-        return (srcLen + size);
-    count = destLen;
-    while (*src != '\0' && count < (size - 1))
-        *(dest + count++) = *src++;
-    *(dest + count) = '\0';
-    return (destLen + srcLen);
+	destlen = ft_strlen(dest);
+	srclen = ft_strlen(src);
+	if (size <= destlen)
+		return (srclen + size);
+	count = destlen;
+	while (*src != '\0' && count < (size - 1))
+		*(dest + count++) = *src++;
+	*(dest + count) = '\0';
+	return (destlen + srclen);
 }
-
 /* int main()
 {
     char first[] = "This is ";

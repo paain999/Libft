@@ -1,21 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 14:11:11 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/12 14:11:12 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memchr (const void *str, int c, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-    unsigned char *s;
+	unsigned char	*s;
 
-    s = (unsigned char *)str;
-    if(n)
-    {
-        while (n--)
-        {
-            if (*s++ == c)
-                return (--s);
-        }
-    }
-    return(NULL);
+	s = (unsigned char *)str;
+	if (n)
+	{
+		while (n--)
+		{
+			if (*s++ == c)
+				return (--s);
+		}
+	}
+	return (NULL);
 }
-
 /* int main () {
    const char str[] = "http://www.tutorialspoint.com";
    const char ch = '.';
