@@ -1,28 +1,32 @@
 #include "libft.h"
 
-void    *ft_memmove(void *dest, const void *src, size_t len)
+void    *ft_memmove(void *dest, const void *src, size_t size)
 {
-    size_t count;
-    if((!dest && !src) || !len)
-        return (NULL);
+    char	*d;
+    char	*s;
+
+    d = (char *)dest;
+	s = (char *)src;
+    if (dest == NULL && src == NULL)
+        return (0);
     if(dest == src)
         return (dest);
-    if(dest > src)
+    if(d > s)
     {
-        while (len > 0)
-        {
-            ((char *)dest)[len - 1] = ((char *)src)[len - 1];
-            len--;
-        }
-        
-    }else
-    {
-        count = 0;
-        while(count < len)
-        {
-            ((char *)dest)[count] = ((char *)src)[count];
-            count++;
-        }
+        while (size--)
+            d[size] = s[size];  
+        return(dest);
     }
+    while (size--)
+        *d++ = *s++;
     return (dest);
 }
+
+/*int main()
+{
+    char dest[100] = "Loremipsun dolor sit a";
+    if (dest != ft_memmove(dest, "consectetur", 5))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, dest, 22);
+    return 0;
+}*/
