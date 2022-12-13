@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:11 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:11:12 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:38:08 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	unsigned char	*s;
 
 	s = (unsigned char *)str;
-	if (n)
+	while (n--)
 	{
-		while (n--)
-		{
-			if (*s++ == c)
-				return (--s);
-		}
+		if (*s++ == (unsigned char)c)
+			return (--s);
 	}
 	return (NULL);
 }

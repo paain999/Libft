@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:32:13 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:32:13 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:08:10 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 		return (0);
 	if (!size)
 		return (src_len);
-	while (src[i] != '\0' && i < size - 1)
+	while (src[i] != '\0' && i + 1 < size)
 	{
 		dest[i] = src[i];
 		++i;
 	}
-	if (size < src_len)
-		dest[size] = '\0';
-	else if (size != 0)
 		dest[i] = '\0';
 	return (src_len);
 }

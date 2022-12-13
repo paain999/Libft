@@ -1,43 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 18:11:51 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/13 17:30:58 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/13 15:54:59 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/13 18:42:37 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static	int	lenght(long int n)
 {
-	int	i;
-	int	sign;
-	int	val;
+	int	len;
 
-	i = 0;
-	sign = 1;
-	val = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	len = 0;
+	if (n < 0)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		len++;
+		n = -n;
 	}
-	while (ft_isdigit(str[i]))
-		val = val * 10 + (str[i++] - 48);
-	return (val * sign);
+	while (n >= 1)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
 }
-/*int main ( void )
+
+static	char	*cast(int n, int len, char *str)
 {
-    int ret;
-    
-    ret = ft_atoi("");
-    printf("%i", ret);
-     return 0 ;
-}*/
+
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	int		isneg;
+	char	*str;
+
+	len = lenght((long int)n);
+	str = ft_calloc(len, sizeof(char));
+	if (!str)
+		return (0);
+	return (str);
+}
