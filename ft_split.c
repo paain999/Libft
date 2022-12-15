@@ -6,42 +6,32 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:45 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/14 22:07:23 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/15 12:04:23 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	check_str(char const *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if(s[i] != c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
 static	int	nbrstr(char const *s, char c)
 {
 	int	i;
-	int	counter;
+	int	count;
 
-	counter = 0;
+	count = 0;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-		{
-			if (s[i + 1] != '\0' && s[i + 1] != c)
-				counter++;
-		}
+		while (s[i] == c)
+			i++;
+		if (s[i - 1] == c && i > 0)
+			count++;
 		i++;
 	}
-	return (counter + 1);
+	if (s[0] != c)
+		count++;
+	if (count == 0 && s[i - 1] == c)
+		return (0);
+	return (count);
 }
 
 static	char	**mallocassign(char **array, char const *s, char c)
@@ -55,24 +45,27 @@ static	char	**mallocassign(char **array, char const *s, char c)
 	j = 0;
 	while (s[i])
 	{
-		if (s[i] != c && s[i + 1] != '\0')
+		if (s[i] != c)
 			count++;
-		else if (s[i - 1] != c || s[i + 1] == '\0')
+		else if (s[i - 1] != c && i > 0)
 		{
-			if (s[i] != c && s[i + 1] == '\0')
-				count++;
-			array[j] = malloc(sizeof(char) * (count + 1));
-			if (!array[j])
+			array[j++] = (char *)malloc(sizeof(char) *(count + 1));
+			if (!array)
 				return (0);
 			count = 0;
-			j++;
+		}
+		if (s[i + 1] == '\0' && s[i] != c)
+		{
+			array[j] = (char *)malloc(sizeof(char) * (count + 1));
+			if (!array)
+				return (0);
 		}
 		i++;
 	}
 	return (array);
 }
 
-static	char	**copy(char **array, char const *s, char c, int nmstr)
+static	char	**copy(char **array, char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -84,19 +77,16 @@ static	char	**copy(char **array, char const *s, char c, int nmstr)
 	while (s[i])
 	{
 		if (s[i] != c)
-		{
 			array[j][k++] = s[i];
-			if (s[i + 1] == '\0')
-				array[j][k] = '\0';
-		}
-		else if (s[i] == c && s[i - 1] != c)
+		else if (s[i - 1] != c && i > 0)
 		{
 			array[j++][k] = '\0';
 			k = 0;
 		}
+		if (s[i + 1] == '\0' && s[i] != c)
+			array[j][k] = '\0';
 		i++;
 	}
-	array[nmstr] = (void *)0;
 	return (array);
 }
 
@@ -104,7 +94,6 @@ char	**ft_split(char const *s, char c)
 {
 	int			nmstr;
 	char		**array;
-	char const	*new_str;
 
 	if (!s || !*s)
 	{
@@ -114,18 +103,19 @@ char	**ft_split(char const *s, char c)
 		*array = (void *)0;
 		return (array);
 	}
-	if(check_str(s, c)){
-		new_str = ft_strtrim(s, (char const *)&c);
-		nmstr = nbrstr(new_str, c);
-		array = malloc((nmstr + 1) * sizeof(char *));
-		if (array){
-		if (mallocassign(array, new_str, c) != 0)
-			return (copy(array, new_str, c, nmstr));
-		else
-			free (array);
-		}
+	nmstr = nbrstr(s, c);
+	array = malloc((nmstr + 1) * sizeof(char *));
+	if (!array)
+		return (NULL);
+	if (mallocassign(array, s, c) != 0)
+		copy(array, s, c);
+	else
+	{
+		free(array);
+		return (NULL);
 	}
-	return ("");
+	array[nmstr] = (void *)0;
+	return (array);
 }
 
 /*int main()
@@ -134,7 +124,7 @@ char	**ft_split(char const *s, char c)
 	int i;
 
 	i = 0;
-    r = ft_split("        ", ' ');
+    r = ft_split("hello!zzzzzzzz", 'z');
 	while (r[i])
 	{
 		printf("%s ", r[i]);
