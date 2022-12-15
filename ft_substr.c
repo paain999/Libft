@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:51:42 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 19:59:24 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:12:49 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,37 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	size_t	strlen;
 	char	*dest;
+	char	*str;
 
-	i = 0;
-	if (s == NULL)
-		return (NULL);
+	if (*s == '\0')
+		return (ft_strdup(""));
 	if ((size_t)start > ft_strlen(s))
 		return (ft_strdup(""));
-	if (len > ft_strlen(s) && start == 0)
-		dest = malloc(sizeof(char) * ft_strlen(s) + 1);
+	strlen = ft_strlen(s);
+	str = (char *)s + start;
+	if (len > strlen && start == 0)
+		len = strlen;
+	else if (len > strlen && start != 0)
+		len = strlen - start;
 	else
-		dest = malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (0);
-	while (i < len && s[start + i])
-	{
-		dest[i] = s[start + i];
-		i++;
-	}
-	dest[i] = '\0';
+		len++;
+	dest = malloc(sizeof(char) * len);
+	if (dest)
+		ft_strlcpy(dest, str, len);
 	return (dest);
 }
-/* int main()
+/*int main()
 {
-    char src[] = "substr function Implementation";
+    char src[] = "hola";
  
-    int m = 7;
-    int n = 15;
+    int m = 0;
+    size_t n = 18446744073709551615;
  
     char* dest = ft_substr(src, m, n);
  
     printf("%s\n", dest);
  
     return 0;
-} */
+}*/

@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:54:59 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/13 18:42:37 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:02:28 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static	int	lenght(long int n)
 
 static	char	*cast(int n, int len, char *str)
 {
-
 }
 
 char	*ft_itoa(int n)
