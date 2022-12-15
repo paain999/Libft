@@ -14,16 +14,21 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	int	count;
+	int	i;
 
-	count = 0;
-	while (str[count])
+	i = 0;
+	while (str[i])
 	{
-		if (str[count] == c)
-			return ((char *)&str[count]);
-		count++;
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
+		i++;
 	}
-	if (c == '\0')
-		return ((char *)&str[count]);
+	if (str[i] == (char)c)
+		return ((char *)&str[i]);
 	return (NULL);
 }
+/*int	main ()
+{
+	printf("%s", ft_strchr("teste", 'e'));
+	return (0);
+}*/

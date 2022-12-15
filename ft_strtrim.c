@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:33:14 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:33:14 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:49:26 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		k;
 	char	*new;
 
-	if (*s1 == '\0')
-		return (NULL);
 	k = 0;
 	i = 0;
 	len = ft_strlen(s1);
@@ -51,12 +49,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	return (NULL);
 }
-/* int main()
+/*int main()
 {
     char *r;
 
-    r = ft_strtrim("hola_Mundo_perron", "_");
+    r = ft_strtrim("ggggggg", "g");
     printf("%s", r);
     free(r);
     return (0);
-} */
+}*/
