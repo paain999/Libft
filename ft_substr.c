@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:51:42 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/15 16:12:49 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/16 00:00:20 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	strlen = ft_strlen(s);
 	str = (char *)s + start;
 	if (len > strlen && start == 0)
-		len = strlen;
+		len = strlen + 1;
 	else if (len > strlen && start != 0)
-		len = strlen - start;
+		len = (strlen - start) + 1;
 	else
 		len++;
 	dest = malloc(sizeof(char) * len);
-	if (dest)
+	if (!dest)
+		return (NULL);
+	else
 		ft_strlcpy(dest, str, len);
 	return (dest);
 }

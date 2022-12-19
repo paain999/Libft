@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:45 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/15 19:14:28 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:11:44 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,54 @@ static	int	nbrstr(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		if (i > 0)
-		{
-			if (s[i - 1] == c)
-				count++;
-		}
-		if(s[i])
+		if (s[i] != c && s[i])
+			count++;
+		while (s[i] != c && s[i])
 			i++;
 	}
-	if (s[0] != c && count == 0)
-		count++;
-	if (count == 0 && s[i - 1] == c)
-		return (0);
 	return (count);
 }
 
 static	size_t	word_len(char const *s, char c, int count)
 {
+	int	i;
+
+	i = 0;
+	while (s[count] != c && s[count])
+	{	
+		i++;
+		count++;
+	}
+	return (i);
+}
+
+static	char	**cpy(char **array, char const *s, char c, int nmstr)
+{
+	int	pos;
+	int	count;
+	size_t	len;
+
+	pos = 0;
+	count = 0;
+	while (pos < nmstr)
+	{
+		while (s[count] == c)
+			count++;
+		len = word_len(s, c, count);
+		array[pos] = ft_substr(s, count, len);
+		count = count + len;
+		pos++;
+	}
+	return (array);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	int			nmstr;
 	char		**array;
-	size_t		len;
-	int	pos;
-	int count;
 	
-
-	if (!s || !*s)
+	nmstr = nbrstr(s, c);
+	if (!s || !*s || !nmstr)
 	{
 		array = malloc(sizeof(char *) * 1);
 		if (!array)
@@ -59,23 +78,11 @@ char	**ft_split(char const *s, char c)
 		*array = (void *)0;
 		return (array);
 	}
-	pos = 0;
-	count = 0;
-	nmstr = nbrstr(s, c);
-	if (!nmstr)
-		return (NULL);
 	array = malloc((nmstr + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	while (pos < nmstr)
-	{
-		while (s[count] == c)
-			count++;
-		len = word_len(s, c, count);
-		array[pos] = ft_substr(s, count, len)
-		
-	}
-	
+	cpy(array, s, c, nmstr);
+	array[nmstr] = 0;
 	return (array);
 }
 
@@ -85,7 +92,7 @@ char	**ft_split(char const *s, char c)
 	int i;
 
 	i = 0;
-    r = ft_split("hello!zzzzzzzz", 'z');
+    r = ft_split("Hola Mundo Virtual", ' ');
 	while (r[i])
 	{
 		printf("%s ", r[i]);
