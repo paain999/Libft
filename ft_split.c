@@ -46,8 +46,8 @@ static	size_t	word_len(char const *s, char c, int count)
 
 static	char	**cpy(char **array, char const *s, char c, int nmstr)
 {
-	int	pos;
-	int	count;
+	int		pos;
+	int		count;
 	size_t	len;
 
 	pos = 0;
@@ -68,7 +68,7 @@ char	**ft_split(char const *s, char c)
 {
 	int			nmstr;
 	char		**array;
-	
+
 	nmstr = nbrstr(s, c);
 	if (!s || !*s || !nmstr)
 	{

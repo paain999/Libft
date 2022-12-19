@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:02:58 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/13 17:53:44 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/19 21:30:19 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_srtjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
 #endif
