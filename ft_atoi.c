@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:11:51 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/13 17:30:58 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:46:31 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 {
     int ret;
     
-    ret = ft_atoi("");
+    ret = ft_atoi("\t\t   545fhd");
     printf("%i", ret);
      return 0 ;
 }*/

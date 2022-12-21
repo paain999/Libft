@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:33:14 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/14 15:49:26 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:42:33 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,26 @@ static	int	ft_flag(char const *set, char c)
 	return (0);
 }
 
+static	char	*ft(int len, int i, char *new, char const *s1)
+{
+	int	k;
+
+	k = 0;
+	while (i < len)
+			new[k++] = s1[i++];
+	return (new);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		len;
 	int		i;
-	int		k;
 	char	*new;
 
-	k = 0;
+	if (*s1 == '\0')
+		return (ft_strdup(""));
+	if (*set == '\0')
+		return (ft_strdup(s1));
 	i = 0;
 	len = ft_strlen(s1);
 	while (s1[i] && ft_flag(set, s1[i]))
@@ -39,13 +51,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 		len--;
 	if (len < i)
 		len = i;
-	new = (char *)malloc((len - i) + 1);
+	new = ft_calloc((len - i) + 1, sizeof(char));
 	if (new)
 	{
-		while (i < len)
-			new[k++] = s1[i++];
-		new[k] = '\0';
-		return (new);
+		return (ft(len, i, new, s1));
 	}
 	return (NULL);
 }

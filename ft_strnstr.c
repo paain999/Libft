@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:33:00 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:33:00 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:08:44 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 	}
 	return (NULL);
 }
-/* int	main()
+/*int	main()
 {
 	char *p;
 
-	p = ft_strnstr("hola mundo", "a", 11);
+	p = ft_strnstr("hola mundo", "mun", 11);
 	printf("%s", p);
-} */
+}*/

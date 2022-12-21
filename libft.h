@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:02:58 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/20 19:14:49 by dajimene         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:20:50 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_srtjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
